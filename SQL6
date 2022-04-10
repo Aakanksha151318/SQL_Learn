@@ -1,0 +1,31 @@
+import mysql.connector
+conn = mysql.connector.connect(user='root',host='localhost',password='dhananjay151318@@',database='AIRLINE_RESERVATION')
+print(conn)
+if conn:
+    print("Successfully Connected!!")
+else:
+    print("Your Not Connected to SQL Databases!!")
+    
+ def Insert_Records():
+    mon = conn.cursor()
+    sql = "INSERT INTO airline_records(Passenger_Name,Passenger_Address,Contact_No,Origin,Destination) VALUES (%s, %s, %s, %s, %s)"
+    our_list = [("Samantha","Delhi","123456","Mumbai","Gujrat"),("Jhon","Pune","345786","Pune","Delhi")]
+    mon.executemany(sql,our_list)
+    conn.commit()
+    line2 = ">>" * 30
+    print(line2)
+    print(mon.rowcount, "details inserted in table...")
+    line2 = ">>" * 30
+    print(line2)
+    
+  def main():
+    Insert_Records()
+    asd = conn.cursor()
+    asd.execute("SHOW DATABASES")
+    for i in asd:
+        print(i)
+    Line = "---" * 30
+    print(Line)
+
+if __name__=="__main__":
+    main()
