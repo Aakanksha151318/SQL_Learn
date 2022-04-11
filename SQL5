@@ -1,5 +1,5 @@
 import mysql.connector
-conn = mysql.connector.connect(user='root',host='localhost',password='dhananjay151318@@',database='student_record')
+conn = mysql.connector.connect(user="user",host="localhost",password="pass",database='student_record')
 if conn:
     print("Successfully Connected:")
 else:
