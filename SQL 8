@@ -1,0 +1,24 @@
+import mysql.connector
+conn = mysql.connector.connect(user="user",host="localhost",password="pass",database="student_record")
+if conn:
+    print("Successfully Connected!!!! ")
+else:
+    print("You have lost Connection.....")
+print(conn)
+
+def QueryFetch():
+    hik = conn.cursor()
+    print("Displaying All Records from Student Records....")
+    line = "____" * 30
+    print(line)
+    query = "SELECT * FROM student"
+    hik.execute(query)
+    result = hik.fetchall()
+    for i in result:
+        print(i)
+    conn.close()
+
+def main():
+    QueryFetch()
+if __name__=="__main__":
+    main()
