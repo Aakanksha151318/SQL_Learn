@@ -1,0 +1,28 @@
+import mysql.connector
+conn = mysql.connector.connect(user="root",host="localhost",password="---",database="area")
+if conn:
+    print("Successfully Connected....")
+else:
+    print("You have Lost Connection.... ")
+print(conn)
+
+def Show():
+    dom = conn.cursor()
+    dom.execute("Select * from area.society")
+    for i in dom:
+        print(i)
+        
+def main():
+    name = input("Name:")
+    mobile_number = input("Mobile Number:")
+    address = input("Address:")
+    person_name = input("Meet Person Name:")
+
+    sql = """INSERT INTO society(P_name, P_mobileNumber, P_address, P_personname) VALUES("{}","{}","{}","{}")""".format(name,mobile_number,address,person_name)
+    data_frame = conn.cursor()
+    data_frame.execute(sql)
+    conn.commit()
+    print(data_frame.rowcount,"Entry inserted into table")
+    Show()
+if __name__ =="__main__":
+    main()
